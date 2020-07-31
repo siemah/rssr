@@ -18,11 +18,17 @@ const browserConfig = {
         exclude: /node_modules/,
       },
       { test: /\.(js)$/, use: 'babel-loader' },
-      { test: /\.css$/, use: [ 'css-loader' ]}
+      { test: /\.css$/, use: ['css-loader'] },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader',
+        ],
+      },
     ]
   },
   resolve: {
-    extensions: [ '.tsx', '.ts', '.js' ],
+    extensions: ['.tsx', '.ts', '.js'],
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -48,11 +54,17 @@ const serverConfig = {
         exclude: /node_modules/,
       },
       { test: /\.(js)$/, use: 'babel-loader' },
-      { test: /\.css$/, use: [MiniCssExtractPlugin.loader, 'css-loader'] }
+      { test: /\.css$/, use: [MiniCssExtractPlugin.loader, 'css-loader'] },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader',
+        ],
+      },
     ]
   },
   resolve: {
-    extensions: [ '.tsx', '.ts', '.js' ],
+    extensions: ['.tsx', '.ts', '.js'],
   },
   plugins: [
     new MiniCssExtractPlugin(),
