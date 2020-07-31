@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const nodeExternals = require('webpack-node-externals')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 
 const browserConfig = {
   mode: "production",
@@ -33,13 +34,20 @@ const browserConfig = {
   plugins: [
     new webpack.DefinePlugin({
       __isBrowser__: "true"
-    })
+    }),
+    new BrowserSyncPlugin({
+      // browse to http://localhost:3000/ during development,
+      // ./public directory is being served
+      host: 'localhost',
+      port: 3000,
+      proxy: 'http://localhost:3000/'
+    }),
   ]
 }
 
 const serverConfig = {
   mode: "production",
-  entry: './src/server/index.tsx',
+  entry: './src/server/index.ts',
   target: 'node',
   externals: [nodeExternals()],
   output: {

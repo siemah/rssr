@@ -1,5 +1,5 @@
 - [x] Support Import images 
-- [ ] Hot reload
+- [x] Hot reload
 - [ ] Sequelize/mongoose
 - [ ] Jest testing library integration
 - [ ] Loadable component
