@@ -1,6 +1,7 @@
 - [x] Support Import images 
 - [x] Hot reload
 - [x] Sequelize/mongoose
-- [ ] Install & config some middlewares
+- [x] Install & config some middlewares like compression, helmet and cors
+- [ ] SEO stuff with react using react-helmet
 - [ ] Jest testing library integration
-- [ ] Loadable component
+- [ ] Loadable component & code spliting

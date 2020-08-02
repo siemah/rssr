@@ -6,21 +6,12 @@ import { StaticRouter, matchPath, RouteProps } from 'react-router-dom'
 import serialize from 'serialize-javascript'
 import App from './views/App'
 import routes from './views/routes'
-import sequelize from './config/db';
 import Post from './models/post'
+import { setupMiddlewares } from './config/server'
 
-sequelize.authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
+const app = express();
 
-const app = express()
-
-app.use(cors())
-app.use(express.static('dist'))
+setupMiddlewares(app, express);
 
 interface ReactRouterContextType {
   url?: string;
@@ -54,14 +45,17 @@ app.get('*', (req, res, next) => {
       <!DOCTYPE html>
       <html>
         <head>
+        
           <title>SSR with RRv5</title>
-          <script src="/bundle.js" defer></script>
           <link href="/main.css" rel="stylesheet">
-          <script>window.__INITIAL_DATA__ = ${serialize(data)}</script>
+        
         </head>
-
         <body>
+
           <div id="app">${markup}</div>
+          <script type='text/javascript' nonce='${res.locals.nonce}'>window.__INITIAL_DATA__ = ${serialize(data)}</script>
+          <script type='text/javascript' nonce='${res.locals.nonce}' src="/bundle.js" defer></script>
+
         </body>
       </html>
     `)
