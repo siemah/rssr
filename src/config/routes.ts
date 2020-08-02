@@ -1,7 +1,6 @@
-import Home from './Home'
-import Grid from './Grid'
-import { fetchPopularRepos } from './api'
-import {ReactNode} from 'react';
+import { ReactNode } from 'react';
+import About from '../views/pages/About';
+import Home from '../views/Home';
 
 interface RouteType {
   path: string;
@@ -17,9 +16,8 @@ const routes: RouteType[] = [
     component: Home,
   },
   {
-    path: '/popular/:id',
-    component: Grid,
-    fetchInitialData: (path = '') => fetchPopularRepos(path.split('/').pop())
+    path: '/about',
+    component: About,
   }
 ]
 

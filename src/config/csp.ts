@@ -1,6 +1,9 @@
 /* tslint:disable */
 const CSP_DIRECTIVES = {
-  defaultSrc: ["'self'"],
+  defaultSrc: [
+    "'self'",
+    "*.typekit.net",
+  ],
   scriptSrc: [
     "'self'",
     "'unsafe-eval'",
@@ -8,7 +11,8 @@ const CSP_DIRECTIVES = {
   ],
   styleSrc: [
     "'self'",
-  ],
+    "*.typekit.net"
+  ]
 };
 
 export default CSP_DIRECTIVES;

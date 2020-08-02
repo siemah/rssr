@@ -14,7 +14,9 @@ export function setupMiddlewares(app: any, express: any) {
     res.locals.nonce = Date.now();
     next();
   });
-  app.use(helmet.contentSecurityPolicy({
-    directives: CSP_DIRECTIVES,
-  }));
+  if(process.env.NODE_ENV === 'production') {
+    app.use(helmet.contentSecurityPolicy({
+      directives: CSP_DIRECTIVES,
+    }));
+  }
 }

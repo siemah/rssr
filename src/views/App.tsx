@@ -1,5 +1,5 @@
 import * as React from 'react'
-import routes from './routes'
+import routes from '../config/routes'
 import { Route, Switch } from 'react-router-dom'
 import Navbar from './Navbar'
 import NoMatch from './NoMatch'
