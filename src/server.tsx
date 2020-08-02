@@ -4,10 +4,10 @@ import React from 'react'
 import ReactDOM from 'react-dom/server'
 import { StaticRouter, matchPath, RouteProps } from 'react-router-dom'
 import serialize from 'serialize-javascript'
-import App from '../shared/App'
-import routes from '../shared/routes'
-import sequelize from '../config/db';
-import Post from '../models/post'
+import App from './views/App'
+import routes from './views/routes'
+import sequelize from './config/db';
+import Post from './models/post'
 
 sequelize.authenticate()
   .then(() => {

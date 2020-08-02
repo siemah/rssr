@@ -1,6 +1,6 @@
 import * as React from 'react'
 import ReactDOM from 'react-dom'
-import App from '../shared/App'
+import App from './views/App'
 import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.hydrate(

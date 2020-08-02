@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 
 const browserConfig = {
-  entry: './src/browser/client.tsx',
+  entry: './src/client.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
@@ -43,7 +43,7 @@ const browserConfig = {
 }
 
 const serverConfig = {
-  entry: './src/server/server.ts',
+  entry: './src/index.ts',
   target: 'node',
   externals: [nodeExternals()],
   output: {
