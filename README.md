@@ -1,5 +1,6 @@
 - [x] Support Import images 
 - [x] Hot reload
-- [ ] Sequelize/mongoose
+- [x] Sequelize/mongoose
+- [ ] Install & config some middlewares
 - [ ] Jest testing library integration
 - [ ] Loadable component

@@ -5,8 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 
 const browserConfig = {
-  mode: "production",
-  entry: './src/browser/index.tsx',
+  entry: './src/browser/client.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
@@ -36,8 +35,6 @@ const browserConfig = {
       __isBrowser__: "true"
     }),
     new BrowserSyncPlugin({
-      // browse to http://localhost:3000/ during development,
-      // ./public directory is being served
       host: 'localhost',
       port: 3001,
       proxy: 'http://localhost:3000/'
@@ -46,8 +43,7 @@ const browserConfig = {
 }
 
 const serverConfig = {
-  mode: "production",
-  entry: './src/server/index.ts',
+  entry: './src/server/server.ts',
   target: 'node',
   externals: [nodeExternals()],
   output: {

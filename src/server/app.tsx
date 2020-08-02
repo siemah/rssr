@@ -1,11 +1,21 @@
 import express from 'express'
 import cors from 'cors'
-import * as React from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom/server'
 import { StaticRouter, matchPath, RouteProps } from 'react-router-dom'
 import serialize from 'serialize-javascript'
 import App from '../shared/App'
 import routes from '../shared/routes'
+import sequelize from '../config/db';
+import Post from '../models/post'
+
+sequelize.authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
+  });
 
 const app = express()
 
@@ -16,11 +26,18 @@ interface ReactRouterContextType {
   url?: string;
   data?: any;
 }
-
+app.get('/api/posts', async (req: any, res: any) => {
+  try {
+    const posts = await Post.findAll();
+    res.json({ posts })
+  } catch (error) {
+    res.end()
+  }
+})
 app.get('*', (req, res, next) => {
   const activeRoute = routes.find((route) => matchPath(req.url, route as RouteProps)) || null;
 
-  
+
   const promise = activeRoute && activeRoute.fetchInitialData
     ? activeRoute.fetchInitialData(req.path)
     : Promise.resolve();

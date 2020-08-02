@@ -21,7 +21,7 @@
     "strict": true,
     "pretty": true,
     "suppressImplicitAnyIndexErrors": true,
-    "target": "es5"
+    "target": "es6"
   },
   "exclude": [
     "node_modules",
@@ -30,7 +30,6 @@
     "acceptance-tests",
     "webpack",
     "jest",
-    "razzle.config.js",
     "*.test.*"
   ],
   "types": ["typePatches", "node", "webpack-env"]
