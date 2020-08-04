@@ -14,3 +14,5 @@ declare module '*.webp' {
   const content: any;
   export default content;
 }
+
+declare let __isBrowser__:boolean;

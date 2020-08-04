@@ -1,9 +1,9 @@
 import * as React from 'react'
 import routes from '../config/routes'
 import { Route, Switch } from 'react-router-dom'
-import Navbar from './Navbar'
-import NoMatch from './NoMatch'
-import ColorfulBorder from './ColorfulBorder'
+import Navbar from './components/Navbar'
+import NoMatch from './pages/404'
+import ColorfulBorder from './components/ColorfulBorder'
 import './styles.css'
 
 export default function App() {
